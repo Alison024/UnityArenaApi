@@ -1,0 +1,20 @@
+GET https://localhost:5001/api/roles
+###
+GET https://localhost:5001/api/roles/getRoleById/2
+###
+POST localhost:5001/api/roles/
+Content-Type: application/json
+
+{
+    "Name":" Manager"
+}
+###
+PUT localhost:5001/api/roles/
+Content-Type: application/json
+
+{
+    "Id": 3,
+    "name":" Manager2"
+}
+###
+DELETE https://localhost:5001/api/roles/3

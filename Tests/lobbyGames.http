@@ -1,0 +1,24 @@
+GET https://localhost:5001/api/lobbyGames
+###
+GET https://localhost:5001/api/lobbyGames/getLobbyGameById/2
+###
+POST localhost:5001/api/lobbyGames/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN1cHBlcjI0IiwibmJmIjoxNjE1NTc3NzA4LCJleHAiOjE2MTU1Nzk1MDgsImlhdCI6MTYxNTU3NzcwOH0.ZSkPpVR0aj7apfLC5xWqYG8DDZZnfkmf8ehKkGrDjOY
+Content-Type: application/json
+
+{
+    "Date":"2021-01-18T15:00:00",
+    "ModeId":1
+}
+###
+PUT localhost:5001/api/lobbyGames/
+Content-Type: application/json
+
+{
+    "Id":1,
+    "Date":"2020-08-13T12:00:00",
+    "ModeId":2
+}
+###
+DELETE https://localhost:5001/api/lobbyGames/2
+

@@ -1,0 +1,21 @@
+GET https://localhost:5001/api/modes
+###
+GET https://localhost:5001/api/modes/getModeById/2
+###
+POST localhost:5001/api/modes/
+Content-Type: application/json
+
+{
+    "modeName":" Control Point"
+}
+###
+PUT localhost:5001/api/modes/
+Content-Type: application/json
+
+{
+    "Id": 3,
+    "modeName":" Control Point 2"
+}
+###
+DELETE https://localhost:5001/api/modes/3
+

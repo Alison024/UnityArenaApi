@@ -1,0 +1,20 @@
+GET https://localhost:5001/api/playerRoles
+###
+GET https://localhost:5001/api/lobbyGames/playerRoles/2
+###
+POST localhost:5001/api/playerRoles/
+Content-Type: application/json
+
+{
+    "PlayerId":1,
+    "RoleId":1
+}
+###
+DELETE https://localhost:5001/api/playerRoles
+Content-Type: application/json
+
+{
+    "PlayerId":1,
+    "RoleId":1
+}
+

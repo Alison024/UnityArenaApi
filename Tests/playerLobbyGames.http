@@ -1,0 +1,23 @@
+GET https://localhost:5001/api/playerLobbyGames
+###
+GET https://localhost:5001/api/playerLobbyGames/getPlayerGameByPlayerId/1
+###
+GET https://localhost:5001/api/playerLobbyGames/getPlayerGameByGameId/1
+###
+POST localhost:5001/api/playerLobbyGames
+Content-Type: application/json
+
+{
+    "PlayerId":1,
+    "LobbyGameId":2
+}
+###
+
+DELETE https://localhost:5001/api/playerLobbyGames
+Content-Type: application/json
+
+{
+    "PlayerId":1,
+    "LobbyGameId":1
+}
+

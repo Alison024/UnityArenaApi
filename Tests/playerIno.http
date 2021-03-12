@@ -1,0 +1,16 @@
+GET https://localhost:5001/api/playersInfo
+###
+GET https://localhost:5001/api/playersInfo/getInfoById/2
+###
+PUT localhost:5001/api/playersInfo/
+Content-Type: application/json
+
+{
+    "Id": 3,
+    "passedGames": 1,
+    "maxKills": 5,
+    "maxDamage": 255
+}
+###
+DELETE https://localhost:5001/api/playersInfo/2
+

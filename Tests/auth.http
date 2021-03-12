@@ -1,0 +1,7 @@
+POST localhost:5001/api/authorization/authenticate
+Content-Type: application/json
+
+{
+    "Login":"supper24",
+    "Password":"123123"
+}

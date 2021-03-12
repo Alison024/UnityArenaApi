@@ -1,0 +1,26 @@
+GET https://localhost:5001/api/players
+###
+GET https://localhost:5001/api/players/getPLayerById/1
+###
+POST localhost:5001/api/players/
+Content-Type: application/json
+
+{
+    "Login":"Man2",
+    "GameLogin":"Man2",
+    "Email":"man2@mail.com",
+    "Password":"123123"
+}
+###
+PUT localhost:5001/api/players/
+Content-Type: application/json
+
+{
+    "Id": 2,
+    "Login":"Mann",
+    "GameLogin":"Mann",
+    "Email":"mann@mail.com"
+}
+###
+DELETE https://localhost:5001/api/players/2
+
