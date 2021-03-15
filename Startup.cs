@@ -43,6 +43,18 @@ namespace UnityArenaApi
 
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson();
+
+            services.AddCors(options=>{
+                options.AddDefaultPolicy(
+                    builder=>{
+                        builder.
+                        AllowAnyHeader().
+                        AllowAnyMethod().
+                        AllowAnyOrigin();
+                    }
+                );
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "UnityArenaApi", Version = "v1" });
@@ -113,6 +125,7 @@ namespace UnityArenaApi
             {
                 endpoints.MapControllers();
             });
+            app.UseCors();
         }
     }
 }
