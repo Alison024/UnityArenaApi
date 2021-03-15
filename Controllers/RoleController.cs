@@ -24,14 +24,14 @@ namespace UnityArenaApi.Controllers
             this.mapper = mapper;
         }
 
-        //[Authorize(Roles="Admin,Player")]
+        [Authorize(Roles="Admin,Player")]
         [HttpGet]
         public async Task<IEnumerable<RoleResource>> GetAllAsync(){
             var modes = await roleService.GetAllAsync();
             var resource = mapper.Map<IEnumerable<Role>, IEnumerable<RoleResource>>(modes);
             return resource;
         }
-        //[Authorize(Roles="Admin,Player")]
+        [Authorize(Roles="Admin,Player")]
         [HttpGet("getRoleById/{id}")]
         public async Task<RoleResource> GetUserById(int id){
             var users = await roleService.GetAllAsync();
@@ -39,7 +39,7 @@ namespace UnityArenaApi.Controllers
             var resource = mapper.Map<Role,RoleResource>(user);
             return resource;
         }
-        //[Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin")]
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] RoleResource resource)
         {
@@ -55,7 +55,7 @@ namespace UnityArenaApi.Controllers
             var roleResource = mapper.Map<Role, RoleResource>(result.internalValue);
             return Ok(roleResource);
         }
-        //[Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin")]
         [HttpPut]
         public async Task<IActionResult> PutAsync([FromBody] RoleResource resource)
         {
@@ -71,7 +71,7 @@ namespace UnityArenaApi.Controllers
             var roleResource = mapper.Map<Role, RoleResource>(result.internalValue);
             return Ok(roleResource);
         }
-        //[Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {

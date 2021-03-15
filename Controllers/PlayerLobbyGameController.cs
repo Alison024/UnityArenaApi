@@ -38,7 +38,7 @@ namespace UnityArenaApi.Controllers
             var resource = mapper.Map<PlayerLobbyGame,PlayerLobbyGameResource>(info);
             return resource;
         }
-        //[Authorize(Roles="Admin,Player")]
+        [Authorize(Roles="Admin,Player")]
         [HttpGet("getPlayerGameByGameId/{id}")]
         public async Task<PlayerLobbyGameResource> GetPlayerLobbyGameByLobbyGameId(int id){
             var infos = await playerLobbyGameService.GetAllAsync();
@@ -46,7 +46,7 @@ namespace UnityArenaApi.Controllers
             var resource = mapper.Map<PlayerLobbyGame,PlayerLobbyGameResource>(info);
             return resource;
         }
-        //[Authorize(Roles="Admin,Player")]
+        [Authorize(Roles="Admin,Player")]
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] PlayerLobbyGameResource resource)
         {
@@ -62,7 +62,7 @@ namespace UnityArenaApi.Controllers
             var infoResource = mapper.Map<PlayerLobbyGame, PlayerLobbyGameResource>(result.internalValue);
             return Ok(infoResource);
         }
-        //[Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin")]
         [HttpDelete]
         public async Task<IActionResult> DeleteAsync([FromBody] PlayerLobbyGameResource resource)
         {

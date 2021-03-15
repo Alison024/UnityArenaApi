@@ -24,14 +24,14 @@ namespace UnityArenaApi.Controllers
             this.mapper = mapper;
         }
 
-        //[Authorize(Roles="Admin, Player")]
+        [Authorize(Roles="Admin")]
         [HttpGet]
         public async Task<IEnumerable<PlayerInfoResource>> GetAllAsync(){
             var infos = await playerInfoService.GetAllAsync();
             var resource = mapper.Map<IEnumerable<PlayerInfo>, IEnumerable<PlayerInfoResource>>(infos);
             return resource;
         }
-        //[Authorize(Roles="Admin, Player")]
+        [Authorize(Roles="Admin, Player")]
         [HttpGet("getInfoById/{id}")]
         public async Task<PlayerInfoResource> GetUserById(int id){
             var infos = await playerInfoService.GetAllAsync();
@@ -55,7 +55,7 @@ namespace UnityArenaApi.Controllers
             var infoResource = mapper.Map<PlayerInfo, PlayerInfoResource>(result.internalValue);
             return Ok(infoResource);
         }*/
-        //[Authorize(Roles="Admin, Player")]
+        [Authorize(Roles="Admin, Player")]
         [HttpPut]
         public async Task<IActionResult> PutAsync([FromBody] PlayerInfoResource resource)
         {
@@ -71,7 +71,7 @@ namespace UnityArenaApi.Controllers
             var playerInfoResource = mapper.Map<PlayerInfo, PlayerInfoResource>(result.internalValue);
             return Ok(playerInfoResource);
         }
-        //[Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin,player")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {

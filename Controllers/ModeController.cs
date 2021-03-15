@@ -23,14 +23,14 @@ namespace UnityArenaApi.Controllers
             this.modeService = lobbyGameService;
             this.mapper = mapper;
         }
-        [Authorize]
+        [Authorize(Roles="Admin")]
         [HttpGet]
         public async Task<IEnumerable<ModeResource>> GetAllAsync(){
             var modes = await modeService.GetAllAsync();
             var resource = mapper.Map<IEnumerable<Mode>, IEnumerable<ModeResource>>(modes);
             return resource;
         }
-        //[Authorize]
+        [Authorize(Roles="Admin")]
         [HttpGet("getModeById/{id}")]
         public async Task<ModeResource> GetUserById(int id){
             var users = await modeService.GetAllAsync();
@@ -38,7 +38,7 @@ namespace UnityArenaApi.Controllers
             var resource = mapper.Map<Mode,ModeResource>(user);
             return resource;
         }
-        //[Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin")]
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] ModeResource resource)
         {
@@ -54,7 +54,7 @@ namespace UnityArenaApi.Controllers
             var modeResource = mapper.Map<Mode, ModeResource>(result.internalValue);
             return Ok(modeResource);
         }
-        //[Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin")]
         [HttpPut]
         public async Task<IActionResult> PutAsync([FromBody] ModeResource resource)
         {
@@ -70,7 +70,7 @@ namespace UnityArenaApi.Controllers
             var modeResource = mapper.Map<Mode, ModeResource>(result.internalValue);
             return Ok(modeResource);
         }
-        //[Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {

@@ -24,14 +24,14 @@ namespace UnityArenaApi.Controllers
             this.playerService =playerService;
             this.mapper = mapper;
         }
-        //[Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin")]
         [HttpGet]
         public async Task<IEnumerable<PlayerResource>> GetAllAsync(){
             var player = await playerService.GetAllAsync();
             var resource = mapper.Map<IEnumerable<Player>, IEnumerable<PlayerResource>>(player);
             return resource;
         }
-        //[Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin,Player")]
         [HttpGet("getPLayerById/{id}")]
         public async Task<PlayerResource> GetUserById(int id){
             var players = await playerService.GetAllAsync();
@@ -39,7 +39,7 @@ namespace UnityArenaApi.Controllers
             var resource = mapper.Map<Player,PlayerResource>(player);
             return resource;
         }
-        [Authorize(Roles="Admin")]
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SavePlayerResource resource)
         {
@@ -58,7 +58,7 @@ namespace UnityArenaApi.Controllers
             return Ok(customerResource);
         }
         //обновлять можно только логин, ник, почту 
-        //[Authorize(Roles="Admin,Player")]
+        [Authorize(Roles="Admin,Player")]
         [HttpPut]
         public async Task<IActionResult> PutAsync([FromBody] PlayerResource resource)
         {
@@ -74,7 +74,7 @@ namespace UnityArenaApi.Controllers
             var userResource = mapper.Map<Player, PlayerResource>(result.internalValue);
             return Ok(userResource);
         }
-        //[Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {

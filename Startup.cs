@@ -13,7 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Pomelo.EntityFrameworkCore.MySql;
+//using Pomelo.EntityFrameworkCore.MySql;
+using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.AspNetCore.HttpsPolicy;
 using UnityArenaApi.Persistence.Context;
 using Microsoft.Extensions.Configuration;
@@ -47,7 +48,7 @@ namespace UnityArenaApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "UnityArenaApi", Version = "v1" });
             });
 
-            services.AddDbContext<AppDbContext>(optionsAction => optionsAction.UseMySql(
+            services.AddDbContext<AppDbContext>(optionsAction => optionsAction.UseSqlServer(
                 Configuration.GetSection("connectionString").GetSection("connectionString").Value).
                 UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 
@@ -56,8 +57,7 @@ namespace UnityArenaApi
 
             var appSettings = appSettingSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
-            services.AddAuthentication(x =>
-            {
+            services.AddAuthentication(x =>{
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(x =>
@@ -106,8 +106,9 @@ namespace UnityArenaApi
             }
             app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

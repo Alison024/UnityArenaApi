@@ -24,12 +24,12 @@ namespace UnityArenaApi.Persistence.Repositories
 
         public async Task<LobbyGame> FindByIdAsync(int id)
         {
-            return await context.LobbyGames.FindAsync(id);
+            return await context.LobbyGames.Include(x=>x.Mode).SingleOrDefaultAsync(x=>x.Id == id);
         }
 
         public async Task<IEnumerable<LobbyGame>> GetAllAsync()
         {
-            return await context.LobbyGames.ToListAsync();
+            return await context.LobbyGames.Include(x=>x.Mode).ToListAsync();
         }
 
         public void Update(LobbyGame lobbyGame)

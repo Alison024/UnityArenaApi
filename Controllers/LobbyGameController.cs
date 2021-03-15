@@ -22,14 +22,14 @@ namespace UnityArenaApi.Controllers
             this.lobbyGameService = lobbyGameService;
             this.mapper = mapper;
         }
-
+        [Authorize]
         [HttpGet]
         public async Task<IEnumerable<LobbyGameResource>> GetAllAsync(){
             var games = await lobbyGameService.GetAllAsync();
             var resource = mapper.Map<IEnumerable<LobbyGame>, IEnumerable<LobbyGameResource>>(games);
             return resource;
         }
-
+        [Authorize(Roles="Admin,Player")]
         [HttpGet("getLobbyGameById/{id}")]
         public async Task<LobbyGameResource> GetUserById(int id){
             var users = await lobbyGameService.GetAllAsync();
@@ -37,7 +37,7 @@ namespace UnityArenaApi.Controllers
             var resource = mapper.Map<LobbyGame,LobbyGameResource>(user);
             return resource;
         }
-        [Authorize(Roles="Admin, Player")]
+        [Authorize(Roles="Admin,Player")]
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] LobbyGameResource resource)
         {
@@ -53,7 +53,7 @@ namespace UnityArenaApi.Controllers
             var userResource = mapper.Map<LobbyGame, LobbyGameResource>(result.internalValue);
             return Ok(userResource);
         }
-        [Authorize(Roles="Admin, Player")]
+        [Authorize(Roles="Admin")]
         [HttpPut]
         public async Task<IActionResult> PutAsync([FromBody] LobbyGameResource resource)
         {

@@ -14,6 +14,7 @@ namespace UnityArenaApi.Persistence.Repositories
 
         public async Task AddAsync(Player player)
         {
+            player.PlayerRoles.Add(new PlayerRole{RoleId = 1});
             await context.Players.AddAsync(player);
         }
 
@@ -24,12 +25,12 @@ namespace UnityArenaApi.Persistence.Repositories
 
         public async Task<Player> FindByIdAsync(int id)
         {
-            return await context.Players.FindAsync(id);
+            return await context.Players.Include(x=>x.PlayerInfo).Include(x=>x.PlayerRoles).ThenInclude(x=>x.Role).SingleOrDefaultAsync(x=>x.Id ==id);
         }
 
         public async Task<IEnumerable<Player>> GetAllAsync()
         {
-            return await context.Players.ToListAsync();
+            return await context.Players.Include(x=>x.PlayerInfo).Include(x=>x.PlayerRoles).ThenInclude(x=>x.Role).ToListAsync();
         }
 
         public void Update(Player player)
