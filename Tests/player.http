@@ -1,8 +1,9 @@
 GET https://localhost:5001/api/players
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjpbIlBsYXllciIsIkFkbWluIl0sInVuaXF1ZV9uYW1lIjoic3VwcGVyMjQiLCJuYmYiOjE2MTYxNzYwMTMsImV4cCI6MTYxNjE3NzgxMywiaWF0IjoxNjE2MTc2MDEzfQ.fEy7VAnvNX0T2XE96y2M1rNXpMOJwzC-woBF-4Ehi8g
 ###
 GET https://localhost:5001/api/players/getPLayerById/1
 ###
-POST localhost:5001/api/players/
+POST localhost:5001/api/players
 Content-Type: application/json
 
 {
@@ -22,5 +23,6 @@ Content-Type: application/json
     "Email":"mann@mail.com"
 }
 ###
-DELETE https://localhost:5001/api/players/2
+DELETE https://localhost:5001/api/players/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjpbIlBsYXllciIsIkFkbWluIl0sInVuaXF1ZV9uYW1lIjoic3VwcGVyMjQiLCJuYmYiOjE2MTYxNzYwMTMsImV4cCI6MTYxNjE3NzgxMywiaWF0IjoxNjE2MTc2MDEzfQ.fEy7VAnvNX0T2XE96y2M1rNXpMOJwzC-woBF-4Ehi8g
 

@@ -23,6 +23,7 @@ namespace UnityArenaApi.Persistence.Context
             modelBuilder.Entity<Role>().HasKey(x=>x.Id);
             modelBuilder.Entity<Role>().Property(x=>x.Id).IsRequired().ValueGeneratedOnAdd();
             modelBuilder.Entity<Role>().Property(x=>x.Name).IsRequired();
+            modelBuilder.Entity<Role>().HasAlternateKey(x=>x.Name);
             modelBuilder.Entity<Role>().HasMany(x=>x.PlayerRoles).WithOne(x=>x.Role).HasForeignKey(z=>z.RoleId);
             modelBuilder.Entity<Role>().HasData(
                 new Role{Id=1, Name="Player"},
@@ -33,6 +34,7 @@ namespace UnityArenaApi.Persistence.Context
             modelBuilder.Entity<Mode>().HasKey(x=>x.Id);
             modelBuilder.Entity<Mode>().Property(x=>x.Id).IsRequired().ValueGeneratedOnAdd();
             modelBuilder.Entity<Mode>().Property(x=>x.ModeName).IsRequired();
+            modelBuilder.Entity<Mode>().HasAlternateKey(x=>x.ModeName);
             modelBuilder.Entity<Mode>().HasMany(x=>x.LobbyGames).WithOne(x=>x.Mode).HasForeignKey(z=>z.ModeId);
             modelBuilder.Entity<Mode>().HasData(
                 new Mode{Id=1, ModeName="Deathmatch"},
@@ -47,6 +49,8 @@ namespace UnityArenaApi.Persistence.Context
 
             modelBuilder.Entity<Player>().ToTable("Players");
             modelBuilder.Entity<Player>().HasKey(x=>x.Id);
+            modelBuilder.Entity<Player>().Property(x=>x.Login).IsRequired();
+            modelBuilder.Entity<Player>().HasAlternateKey(x=>x.Login);
             modelBuilder.Entity<Player>().Property(x=>x.Id).IsRequired().ValueGeneratedOnAdd();
             modelBuilder.Entity<Player>().Property(x=>x.GameLogin).IsRequired();
             modelBuilder.Entity<Player>().Property(x=>x.Email).IsRequired();
