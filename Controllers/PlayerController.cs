@@ -45,7 +45,7 @@ namespace UnityArenaApi.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
-
+            
             var player = mapper.Map<SavePlayerResource, Player>(resource);
             player.Password = HelperMD5.GenerateMD5Hash(player.Password);
             player.PlayerInfo = new PlayerInfo{MaxDamage=0,MaxKills=0,PassedGames=0};

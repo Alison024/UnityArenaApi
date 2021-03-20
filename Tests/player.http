@@ -1,5 +1,5 @@
 GET https://localhost:5001/api/players
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjpbIlBsYXllciIsIkFkbWluIl0sInVuaXF1ZV9uYW1lIjoic3VwcGVyMjQiLCJuYmYiOjE2MTYxNzYwMTMsImV4cCI6MTYxNjE3NzgxMywiaWF0IjoxNjE2MTc2MDEzfQ.fEy7VAnvNX0T2XE96y2M1rNXpMOJwzC-woBF-4Ehi8g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjpbIlBsYXllciIsIkFkbWluIl0sInVuaXF1ZV9uYW1lIjoic3VwcGVyMjQiLCJuYmYiOjE2MTYxODUyNjQsImV4cCI6MTYxNjE4NzA2NCwiaWF0IjoxNjE2MTg1MjY0fQ.YZibQSDnjfy6aP7-s8beBstF3cpOAQ63qViaBkzLt-c
 ###
 GET https://localhost:5001/api/players/getPLayerById/1
 ###
@@ -7,7 +7,7 @@ POST localhost:5001/api/players
 Content-Type: application/json
 
 {
-    "Login":"Man2",
+    "Login":"supper24",
     "GameLogin":"Man2",
     "Email":"man2@mail.com",
     "Password":"123123"
